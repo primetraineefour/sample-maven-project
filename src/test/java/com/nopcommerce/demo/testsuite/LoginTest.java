@@ -1,7 +1,8 @@
 package com.nopcommerce.demo.testsuite;
 
+import com.nopcommerce.demo.pages.HomePage;
+import com.nopcommerce.demo.pages.LoginPage;
 import com.nopcommerce.demo.testbase.TestBase;
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,23 +11,33 @@ import org.testng.annotations.Test;
  */
 public class LoginTest extends TestBase {
 
+    HomePage homePage = new HomePage();
+    LoginPage loginPage = new LoginPage();
+
     @Test
     public void verifyUserShouldNavigateToLoginPage(){
-        clickOnElement(By.className("ico-login"));
-        String expectedMessage = "Welcome, Please Sign In!";
-        String actualMessage = getTextFromElement(By.xpath("//h1[text()='Welcome, Please Sign In!']"));
+        homePage.clickOnLoginLink();
+        String expectedMessage = "Welcome, Please Sign In";
+        String actualMessage = loginPage.getWelcomeText();
         Assert.assertEquals(expectedMessage, actualMessage);
     }
 
     @Test
-    public void verifyUserShouldLoginSuccessfullyWithValidCredentials(){
-        clickOnElement(By.className("ico-login"));
-        sendTextToElement(By.id("Email"), "abc@gmail.com");
-        sendTextToElement(By.id("Password"), "123456");
-        clickOnElement(By.xpath("//input[@class='button-1 login-button']"));
-        String expectedMessage = "Welcome to our store";
-        String actualMessage = getTextFromElement(By.xpath("//h2[contains(text(),'Welcome to our store')]"));
+    public void verifyUserShouldNotLoginSuccessfullyWithValidCredentials(){
+        homePage.clickOnLoginLink();
+        loginPage.enterEmailId("abcd@yahoo.com");
+        loginPage.enterPassword("pass1");
+        loginPage.clickOnLoginButton();
+        String expectedMessage = "Login was unsuccessful. Please correct the errors and try again.\n" +
+                "No customer account found";
+        String actualMessage = loginPage.getErrorMessage();
         Assert.assertEquals(expectedMessage, actualMessage);
     }
+
+    /*@Test
+    public void doLogin(){
+        homePage.clickOnLoginLink();
+        loginPage.loginToApplication("abcd@yahoo.com", "Pass1");
+    }*/
 
 }

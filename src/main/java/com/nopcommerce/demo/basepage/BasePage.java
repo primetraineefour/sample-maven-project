@@ -1,5 +1,6 @@
 package com.nopcommerce.demo.basepage;
 
+import com.nopcommerce.demo.propertyreader.PropertyReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class BasePage {
 
     public static WebDriver driver;
-    String baseUrl = "https://demo.nopcommerce.com/";
+    String baseUrl = PropertyReader.getInstance().getProperty("baseUrl");
     String projectPath = System.getProperty("user.dir");
 
     public void selectBrowser(String browser) {
@@ -31,7 +32,7 @@ public class BasePage {
         }
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Integer.parseInt(PropertyReader.getInstance().getProperty("implicitlyWait")), TimeUnit.SECONDS);
         driver.get(baseUrl);
     }
 
