@@ -13,9 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class BasePage {
 
     public static WebDriver driver;
-
     String baseUrl = "https://demo.nopcommerce.com/";
-
     String projectPath = System.getProperty("user.dir");
 
     public void selectBrowser(String browser) {
