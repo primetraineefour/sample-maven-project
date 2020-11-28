@@ -18,7 +18,7 @@ public class BasePage {
 
     public void selectBrowser(String browser) {
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", projectPath + "/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", projectPath+"\\drivers\\chromedriver.exe");
             driver = new ChromeDriver();
         } else if (browser.equalsIgnoreCase("firefox")) {
             System.setProperty("webdriver.gecko.driver", projectPath + "/drivers/geckodriver.exe");

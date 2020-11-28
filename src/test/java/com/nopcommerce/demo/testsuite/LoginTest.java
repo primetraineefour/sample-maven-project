@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
  */
 public class LoginTest extends TestBase {
 
-
     @Test
     public void verifyUserShouldNavigateToLoginPage(){
         clickOnElement(By.className("ico-login"));

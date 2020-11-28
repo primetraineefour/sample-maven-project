@@ -41,6 +41,14 @@ public class Utility extends BasePage {
         element.click();
     }
 
+
+    /*
+     *This method will return list of elements
+     */
+    public List<WebElement> getListOfElements(By by) {
+        return driver.findElements(by);
+    }
+
     /**
      * This method will return text from element
      */

@@ -21,7 +21,7 @@ public class SortByTest extends TestBase {
         selectByVisibleTextFromDropDown(By.id("products-orderby"), "Name: Z to A");
 
         //Getting list of web elements of product name
-        List<WebElement> deskTopPCs = driver.findElements(By.xpath("//h2[@class='product-title']"));
+        List<WebElement> deskTopPCs = getListOfElements(By.xpath("//h2[@class='product-title']"));
 
         //Declaring the String List to store product name
         List<String> deskTopNames = new ArrayList<>();
@@ -33,6 +33,7 @@ public class SortByTest extends TestBase {
         // Create the temp list of product name and sort it using Collections.sort method
         List<String> tempList = new ArrayList<>();
         tempList.addAll(deskTopNames);
+
         Collections.sort(tempList, Collections.reverseOrder());
         System.out.println(deskTopNames);
         System.out.println(tempList);
