@@ -29,7 +29,7 @@ public class ExcelRead {
         XSSFCell Cell;
 
         // Location of the Excel file
-        String path = projectPath + "\\src\\test\\java\\com\\demo\\nopcommerce\\resources\\testdata\\ExcelRead.xlsx";
+        String path = projectPath + "\\src\\test\\java\\resources\\testdata\\ExcelRead.xlsx";
         String sheetName = "Sheet1";
 
         try {
@@ -37,7 +37,7 @@ public class ExcelRead {
             excelWBook = new XSSFWorkbook(ExcelFile);
             excelWSheet = excelWBook.getSheet(sheetName);
 
-            Cell = excelWSheet.getRow(2).getCell(1);
+            Cell = excelWSheet.getRow(1).getCell(0);
             String cellData = Cell.getStringCellValue();
             System.out.println("Cell Data: " + cellData);
 

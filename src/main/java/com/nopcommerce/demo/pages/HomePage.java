@@ -2,6 +2,7 @@ package com.nopcommerce.demo.pages;
 
 import com.nopcommerce.demo.utility.Utility;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Reporter;
 
 /**
@@ -21,6 +22,12 @@ public class HomePage extends Utility {
     public void clickOnRegisterLink() {
         Reporter.log("Clicking on register link " + registerLink.toString() + "<br>");
         clickOnElement(registerLink);
+    }
+
+    public static void main(String[] args) {
+        By loginLink = By.linkText("Log in");
+        WebElement element = driver.findElement(loginLink);
+        System.out.println(element);
     }
 
 }

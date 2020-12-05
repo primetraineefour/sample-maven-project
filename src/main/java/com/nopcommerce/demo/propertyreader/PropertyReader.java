@@ -55,5 +55,4 @@ public class PropertyReader {
         return null;
     }
 
-
 }
